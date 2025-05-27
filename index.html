@@ -158,7 +158,7 @@ We introduce ``personalized safety'' to fill this gap and present PENGUIN—a be
       <h2 class="title is-3">Personalized Safety Problem is a normal issue</h2>
     </div>
     <figure class="image" style="max-width: 60%; margin: 2rem auto;">
-      <img src="static/images/motivation_compressed_new.pdf" alt="Teaser Image" />
+      <img src="static/images/motivation.png" alt="Teaser Image" />
     </figure>
     <div class="content">
       <p>
@@ -167,62 +167,59 @@ Left (blue dashed box): Two users with different personal contexts ask the same 
   </div>
 </section>
 
-<!-- Main Takeaways Section -->
 <section class="section">
+      <div class="box">
+      <h3 class="subtitle is-4">PENGUIN BENCHMARK</h3>
+      <div class="content">
+        <p>
+          PENHGUIN benchmark (Personalized Evaluation of Nuanced Generation Under Individual Needs), the first large-scale testbed for evaluating LLM safety in personalized, high-stake scenarios.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/benchmark.png" alt="Large Teacher CoT Gap">
+        </figure>
+        <p>
+          Each user scenario is associated with structured context attributes and is paired with both context-rich and context-free queries. These are scored on a three-dimensional personalized safety scale to quantify the impact of user context information.
+      </div>
+    </div>
+  
   <div class="container is-max-desktop">
     <div class="has-text-centered">
-      <h2 class="title is-3">Main Takeaways</h2>
+      <h2 class="title is-3">Data shape</h2>
     </div>
     
-    <!-- Takeaway 1 -->
     <div class="box">
-      <h3 class="subtitle is-4">Takeaway 1: Long CoT Gap</h3>
+      <h3 class="subtitle is-4">Example Data</h3>
       <div class="content">
         <p>
-          Small student models tend to benefit more from short CoT, while large student models gain greater advantages from long CoT.
+          We collect data from both Reddit and Sythetic Data.
         </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/main_1.jpg" alt="Long CoT Gap">
+          <img src="static/images/Data.png" alt="Long CoT Gap">
         </figure>
         <p>
-          Long CoT Gap (<em>Δ<sub>Long</sub>=P<sub>Long</sub> - P<sub>Short</sub></em>) of student models with different model sizes for (a) Qwen family and (b) Llama family. For teacher models, <code>QwQ-32B-Preview</code> generates long CoT responses, while <code>Qwen2.5-32B-Instruct</code> generates short CoT responses. Negative (<em>Δ<sub>Long</sub> &lt; 0</em>) indicates that long CoT is worse; positive (<em>Δ<sub>Long</sub> &gt; 0</em>) indicates it is better.
+An example of our Reddit Data.
         </p>
       </div>
     </div>
     
-    <!-- Takeaway 2 -->
+    
     <div class="box">
-      <h3 class="subtitle is-4">Takeaway 2: Large Teacher CoT Gap</h3>
+      <h3 class="subtitle is-4">Experiment</h3>
       <div class="content">
         <p>
-          Small student models tend to learn better from small teachers, while large student models benefit more from large teachers.
+          Experiments among six state-of-art LLMs
         </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/main_2.jpg" alt="Large Teacher CoT Gap">
+          <img src="static/images/radar_subplots_combined.png" alt="Math Expert Model">
         </figure>
         <p>
-          Large model CoT Gap (<em>Δ<sub>Large</sub>=P<sub>Large</sub> - P<sub>Small</sub></em>) of student models for (a) Qwen family and (b) Llama family. For teacher models, <code>Qwen2.5-72B-Instruct</code> is used as the large teacher while <code>Qwen2.5-3B-Instruct</code> serves as the small teacher. Negative (<em>Δ<sub>Large</sub> &lt; 0</em>) indicates that large teacher CoT is worse; positive (<em>Δ<sub>Large</sub> &gt; 0</em>) indicates it is better.
-        </p>
+all models demonstrate substantial improvements with personalized context information.
+On average, safety scores increase from 2.79 to 4.00 across the dataset, reflecting a consistent and significant trend.
+These results indicate that the benefits of personalized information generalize across diverse model architectures and capability levels, which also motivates our next question: \textit{which user attributes contribute most to improving personalized safety?}
+This question is particularly realistic given that collecting full context is not always feasible in real-world applications.        </p>
       </div>
     </div>
     
-    <!-- Takeaway 3 -->
-    <div class="box">
-      <h3 class="subtitle is-4">Takeaway 3: Effect of Domain Knowledge</h3>
-      <div class="content">
-        <p>
-          Limited domain knowledge of small models may hinder their learning from strong reasoning teachers.
-        </p>
-        <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/math_expert.jpg" alt="Math Expert Model">
-        </figure>
-        <p>
-          Math expert models usually exhibit a less significant Learnability Gap compared to general models, suggesting they can more easily learn from long CoT data or large teacher CoT.
-        </p>
-      </div>
-    </div>
-    
-    <!-- Takeaway 4 -->
     <div class="box">
       <h3 class="subtitle is-4">Takeaway 4: Base vs Instruct</h3>
       <div class="content">
