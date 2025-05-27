@@ -142,7 +142,7 @@
           <p>
 Large language models (LLMs) typically generate identical or similar responses for all users given the same prompt, posing serious safety risks in high-stakes applications where user vulnerabilities differ widely.
 Existing safety evaluations primarily rely on context-independent metrics—such as factuality, bias, or toxicity—overlooking the fact that the same response may carry divergent risks depending on the user's background or condition.
-We introduce ``personalized safety'' to fill this gap and present \emph{PENGUIN}—a benchmark comprising $14,000$ scenarios across seven sensitive domains with both context-rich and context-free variants. Evaluating six leading LLMs, we demonstrate that personalized user information significantly improves safety scores by $43.2\%$, confirming the effectiveness of personalization in safety alignment. However, not all context attributes contribute equally to safety enhancement. To address this, we develop \emph{RAISE}—a training-free, two-stage agent framework that strategically acquires user-specific background. RAISE improves safety scores by up to $31.6\%$ over six vanilla LLMs, while maintaining a low interaction cost of just $2.7$ user queries on average. Our findings highlight the importance of selective information gathering in safety-critical domains and offer a practical solution for personalizing LLM responses without model retraining. This work establishes a foundation for safety research that adapts to individual user contexts rather than assuming a universal harm standard.          </p>
+We introduce ``personalized safety'' to fill this gap and present PENGUIN—a benchmark comprising 14,000 scenarios across seven sensitive domains with both context-rich and context-free variants. Evaluating six leading LLMs, we demonstrate that personalized user information significantly improves safety scores by $43.2\%$, confirming the effectiveness of personalization in safety alignment. However, not all context attributes contribute equally to safety enhancement. To address this, we develop RAISE—a training-free, two-stage agent framework that strategically acquires user-specific background. RAISE improves safety scores by up to 31.6% over six vanilla LLMs, while maintaining a low interaction cost of just 2.7 user queries on average. Our findings highlight the importance of selective information gathering in safety-critical domains and offer a practical solution for personalizing LLM responses without model retraining. This work establishes a foundation for safety research that adapts to individual user contexts rather than assuming a universal harm standard.          </p>
         </div>
       </div>
     </div>
@@ -151,44 +151,118 @@ We introduce ``personalized safety'' to fill this gap and present \emph{PENGUIN}
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+<!-- Motivation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Personalized Safety Problem is a normal issue</h2>
+    </div>
+    <figure class="image" style="max-width: 60%; margin: 2rem auto;">
+      <img src="static/images/motivation.pdf" alt="Teaser Image" />
+    </figure>
+    <div class="content">
+      <p>
+Left (blue dashed box): Two users with different personal contexts ask the same sensitive query, but a generic response leads to divergent safety outcomes—harmless for one, harmful for the other. Left (blue region): Evaluating this query across 1,000 diverse user profiles reveals highly inconsistent safety scores across models. Right (orange dashed box): When user-specific context is included, LLMs produce safer and more empathetic responses. Right (orange region): This trend generalizes across 14,000 context-rich scenarios, motivating our Penguin Benchmark for evaluating personalized safety in high-risk settings.      </p>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
+
+<!-- Main Takeaways Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Main Takeaways</h2>
+    </div>
+    
+    <!-- Takeaway 1 -->
+    <div class="box">
+      <h3 class="subtitle is-4">Takeaway 1: Long CoT Gap</h3>
+      <div class="content">
+        <p>
+          Small student models tend to benefit more from short CoT, while large student models gain greater advantages from long CoT.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/main_1.jpg" alt="Long CoT Gap">
+        </figure>
+        <p>
+          Long CoT Gap (<em>Δ<sub>Long</sub>=P<sub>Long</sub> - P<sub>Short</sub></em>) of student models with different model sizes for (a) Qwen family and (b) Llama family. For teacher models, <code>QwQ-32B-Preview</code> generates long CoT responses, while <code>Qwen2.5-32B-Instruct</code> generates short CoT responses. Negative (<em>Δ<sub>Long</sub> &lt; 0</em>) indicates that long CoT is worse; positive (<em>Δ<sub>Long</sub> &gt; 0</em>) indicates it is better.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Takeaway 2 -->
+    <div class="box">
+      <h3 class="subtitle is-4">Takeaway 2: Large Teacher CoT Gap</h3>
+      <div class="content">
+        <p>
+          Small student models tend to learn better from small teachers, while large student models benefit more from large teachers.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/main_2.jpg" alt="Large Teacher CoT Gap">
+        </figure>
+        <p>
+          Large model CoT Gap (<em>Δ<sub>Large</sub>=P<sub>Large</sub> - P<sub>Small</sub></em>) of student models for (a) Qwen family and (b) Llama family. For teacher models, <code>Qwen2.5-72B-Instruct</code> is used as the large teacher while <code>Qwen2.5-3B-Instruct</code> serves as the small teacher. Negative (<em>Δ<sub>Large</sub> &lt; 0</em>) indicates that large teacher CoT is worse; positive (<em>Δ<sub>Large</sub> &gt; 0</em>) indicates it is better.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Takeaway 3 -->
+    <div class="box">
+      <h3 class="subtitle is-4">Takeaway 3: Effect of Domain Knowledge</h3>
+      <div class="content">
+        <p>
+          Limited domain knowledge of small models may hinder their learning from strong reasoning teachers.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/math_expert.jpg" alt="Math Expert Model">
+        </figure>
+        <p>
+          Math expert models usually exhibit a less significant Learnability Gap compared to general models, suggesting they can more easily learn from long CoT data or large teacher CoT.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Takeaway 4 -->
+    <div class="box">
+      <h3 class="subtitle is-4">Takeaway 4: Base vs Instruct</h3>
+      <div class="content">
+        <p>
+          Small base models experience a more significant learnability gap than Instruct models.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/base_vs_instruct.jpg" alt="Base vs Instruct">
+        </figure>
+        <p>
+          Base models generally exhibit a more pronounced learnability gap than Instruct models, indicating that it is more challenging for small base models to effectively learn from long CoT data or large teacher CoT.
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Mix Distillation Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Mix Distillation</h2>
+    </div>
+    <div class="box">
+      <h3 class="subtitle is-4">Takeaway 5: Mix Distillation Bridges Gap</h3>
+      <div class="content">
+        <p>
+          By mixing long CoT data (resp. large teacher CoTs) and short CoT data (resp. small teacher CoT), the small student model can achieve better performance compared to training on either data alone.
+        </p>
+        <figure class="image" style="margin: 1rem 0;">
+          <img src="static/images/table.jpg" alt="Mix Distillation Table">
+        </figure>
+        <p>
+          <strong>Mix Distillation</strong> outperforms the baseline models across most metrics. Using <code>Llama3.2-3B-Instruct</code> and <code>Qwen2.5-3B-Instruct</code> as student models with 7.5k samples from the MATH dataset for training, we distill responses generated by different teacher models as baselines. Our proposed Mix-Long combines long CoT and normal CoT data in a 1:4 ratio, while Mix-Large combines strong and weak teacher responses in the same proportion. Experimental results show that both methods surpass the baselines in most evaluation metrics, with the highest score in bold and the second highest underlined.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
