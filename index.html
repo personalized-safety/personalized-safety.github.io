@@ -158,7 +158,7 @@ We introduce ``personalized safety'' to fill this gap and present PENGUIN—a be
       <h2 class="title is-3">Personalized Safety Problem is a normal issue</h2>
     </div>
     <figure class="image" style="margin: 1rem 0;">
-      <img src="static/images/motivation.png" alt="Teaser Image" />
+      <img src="static/images/motivation.png" alt="Motivation" />
     </figure>
     <div class="content">
       <p>
@@ -175,7 +175,7 @@ Left (blue dashed box): Two users with different personal contexts ask the same 
           PENHGUIN benchmark (Personalized Evaluation of Nuanced Generation Under Individual Needs), the first large-scale testbed for evaluating LLM safety in personalized, high-stake scenarios.
         </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/benchmark.png" alt="Large Teacher CoT Gap">
+          <img src="static/images/benchmark.png" alt="PENGUIN Benchmark">
         </figure>
         <p>
           Each user scenario is associated with structured context attributes and is paired with both context-rich and context-free queries. These are scored on a three-dimensional personalized safety scale to quantify the impact of user context information.
@@ -194,7 +194,7 @@ Left (blue dashed box): Two users with different personal contexts ask the same 
           We collect data from both Reddit and Sythetic Data.
         </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/Data.png" alt="Long CoT Gap">
+          <img src="static/images/Data.png" alt="Example Data">
         </figure>
         <p>
 An example of our Reddit Data.
@@ -210,7 +210,7 @@ An example of our Reddit Data.
           Experiments among six state-of-art LLMs
         </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/radar_subplots_combined.png" alt="Math Expert Model">
+          <img src="static/images/radar_subplots_combined.png" alt="Baseline">
         </figure>
         <p>
 all models demonstrate substantial improvements with personalized context information.
@@ -226,11 +226,8 @@ This question is particularly realistic given that collecting full context is no
     <div class="box">
       <h3 class="subtitle is-4">RAISE (Risk-Aware Information Selection Engine)</h3>
       <div class="content">
-        <p>
-          Small base models experience a more significant learnability gap than Instruct models.
-        </p>
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/method" alt="Base vs Instruct">
+          <img src="static/images/method.png" alt="RAISE method">
         </figure>
         <p>
 Overview of our proposed RAISE framework. \em{Left}: We formulate the task as a sequential attribute selection problem, where each state represents a partial user context. \em{Middle}: An offline LLM-guided Monte Carlo Tree Search (MCTS) planner explores this space to discover optimized acquisition paths that maximize safety scores under budget constraints. \em{Right}: At inference time, the online agent follows the retrieved path via an Acquisition Module, while an Abstention Module decides when context suffices for safe response generation.        </p>
@@ -242,7 +239,7 @@ Overview of our proposed RAISE framework. \em{Left}: We formulate the task as a 
       <div class="content">
 
         <figure class="image" style="margin: 1rem 0;">
-          <img src="static/images/table.jpg" alt="Mix Distillation Table">
+          <img src="static/images/table.png" alt="Ablation Results">
         </figure>
         <p>
 We denote the unmodified, context-free model as the vanilla baseline, which achieves an average safety score of only 2.86. Adding the abstention mechanism enables the model to determine when more user information is needed, avoiding unsafe responses when information is insufficient, thus improving safety scores to 3.56 (a 24.5% improvement). Further introducing the path planner allows the system to intelligently select the most valuable attribute query sequence, maximizing safety scores to 3.77 (an additional 5.9% improvement) while keeping query counts moderate (an average of just 2.7 queries per user (2.5 +Agent);
