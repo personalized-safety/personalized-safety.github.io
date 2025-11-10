@@ -162,25 +162,26 @@
   <div class="container is-max-desktop">
     <div style="
       position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 16px;
+      padding-bottom: 56.25%; /* 16:9比例 */
+      height: 0;
       overflow: hidden;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     ">
-      <video autoplay loop muted playsinline controls
+      <video autoplay loop muted playsinline controls preload="auto"
              style="
+               position: absolute;
+               top: 0;
+               left: 0;
                width: 100%;
                height: 100%;
-               object-fit: cover;
-               border-radius: 16px;
+               object-fit: cover;  /* 保证无黑边 */
+               border-radius: 12px;
              ">
-        <source src="static/videos/motivation.mp4" type="video/mp4">
+        <source src="static/videos/demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-    <p class="is-size-6" style="margin-top: 0.5rem;">(Auto-play muted demo video)</p>
   </div>
 </section>
 
