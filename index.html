@@ -158,13 +158,29 @@
 </section>
 
 <!-- Video -->
-<section class="section has-text-centered">
+<section class="section has-text-centered" style="background-color:#fafafa;">
   <div class="container is-max-desktop">
-    <video autoplay loop muted controls
-           width="100%" style="border-radius: 12px; max-width: 800px;">
-      <source src="static/videos/demo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div style="
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    ">
+      <video autoplay loop muted playsinline controls
+             style="
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               border-radius: 16px;
+             ">
+        <source src="static/videos/motivation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="is-size-6" style="margin-top: 0.5rem;">(Auto-play muted demo video)</p>
   </div>
 </section>
 
