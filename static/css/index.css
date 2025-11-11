@@ -133,5 +133,67 @@ body {
   font-size: smaller;
 }
 
+/* ====== Publication Buttons (custom color scheme) ====== */
+.publication-links .button {
+  border: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Default neutral (Paper, NeurIPS, etc.) */
+.publication-links .button[data-type="default"] {
+  background-color: #f5f5f5;
+  color: #222 !important;
+}
+.publication-links .button[data-type="default"]:hover {
+  background-color: #eaeaea;
+}
+
+/* GitHub */
+.publication-links .button[data-type="github"] {
+  background-color: #24292e;
+  color: #fff !important;
+}
+.publication-links .button[data-type="github"]:hover {
+  background-color: #333;
+}
+
+/* arXiv */
+.publication-links .button[data-type="arxiv"] {
+  background-color: #b31b1b;
+  color: #fff !important;
+}
+.publication-links .button[data-type="arxiv"]:hover {
+  background-color: #a11;
+}
+
+/* Hugging Face */
+.publication-links .button[data-type="huggingface"] {
+  background-color: #ffcc4d;
+  color: #000 !important;
+}
+.publication-links .button[data-type="huggingface"]:hover {
+  background-color: #f5c03f;
+}
+
+/* Google Slides */
+.publication-links .button[data-type="slides"] {
+  background-color: #0f9d58;
+  color: #fff !important;
+}
+.publication-links .button[data-type="slides"]:hover {
+  background-color: #0c8747;
+}
+
+/* NeurIPS */
+.publication-links .button[data-type="neurips"] {
+  background-color: #555;
+  color: #fff !important;
+}
+.publication-links .button[data-type="neurips"]:hover {
+  background-color: #333;
+}
+
+
 
 
