@@ -158,30 +158,12 @@
 </section>
 
 <!-- Video -->
-<section class="section has-text-centered" style="background-color:#fafafa;">
+<section class="section has-text-centered">
   <div class="container is-max-desktop">
-    <div style="
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9比例 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    ">
-      <video autoplay loop muted playsinline controls preload="auto"
-             style="
-               position: absolute;
-               top: 0;
-               left: 0;
-               width: 100%;
-               height: 100%;
-               object-fit: cover;  /* 保证无黑边 */
-               border-radius: 12px;
-             ">
-        <source src="static/videos/demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <video autoplay loop muted controls width="100%" style="border-radius: 12px; max-width: 800px;">
+      <source src="static/videos/demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 </section>
 
